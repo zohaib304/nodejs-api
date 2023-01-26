@@ -1,6 +1,7 @@
 const express = require("express")
 const path = require("path")
 const recipesRouter = require("./routers/recipes")
+const usersRouter = require('./routers/users');
 const cors = require("cors")
 const { handleErrors } = require("./utils/error")
 const auth = require("./middlewares/auth")
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
     res.redirect("/api/v1/recipes");
 });
 app.use("/api/v1/recipes", recipesRouter);
+app.use("/api/v1/users", usersRouter);
 
 app.use(handleErrors)
 

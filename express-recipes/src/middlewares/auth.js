@@ -4,12 +4,10 @@ const { Strategy, ExtractJwt } = require("passport-jwt");
 
 const { find: findUser } = require("../services/users");
 
-const { JWT_SECRET } = process.env;
-
 const strategy = new Strategy(
     {
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: JWT_SECRET,
+        secretOrKey: "##%%MyS3cr3tK3Y%%##",
     },
     async (jwtPayload, done) => {
         try {

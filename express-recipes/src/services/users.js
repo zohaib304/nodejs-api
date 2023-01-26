@@ -12,7 +12,7 @@ const authenticate = async ({ id, email, password }) => {
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
-    const token = jwt.sign({ id: user.id }, JWT_SECRET, {
+    const token = jwt.sign({ id: user.id }, "##%%MyS3cr3tK3Y%%##", {
         expiresIn: 24 * 60 * 60,
     });
 
@@ -30,7 +30,7 @@ const create = async ({ email, name, password }) => {
         password: await bcrypt.hash(password, 10),
     };
 
-    const token = jwt.sign({ id: newUser.id }, JWT_SECRET, {
+    const token = jwt.sign({ id: newUser.id }, "##%%MyS3cr3tK3Y%%##", {
         expiresIn: 24 * 60 * 60,
     });
 
